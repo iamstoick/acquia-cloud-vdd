@@ -1,0 +1,141 @@
+A local VM development environment for Drupalistas based on newest Acquia platform.
+
+
+CONTENTS OF THIS FILE
+---------------------
+
+  * Introduction
+  * Specs
+  * Who Can Use Undine?
+  * Installation
+  * Design Decisions
+  * Future Direction
+  * Features added by X-Team
+  * Sponsorship
+
+
+INTRODUCTION
+------------
+
+Undine streamlines and automates the process of configuring a virtual machine
+(VM) as a local development environment for Drupal. Using Vagrant to manage the
+VirtualBox VM and the built-in Puppet stand-alone for provisioning, Undine
+reduces the tedious (and very often disjoint and error-prone) process of setting
+up a Drupal development environment to a single command on Windows, OS X and
+Linux.
+
+Those users who deploy to the Acquia cloud have the added benefit of developing
+on a VM intended to mimic the environment they will eventually deploy to.
+
+
+SPECIFICATION
+-------------
+
+  * Ubuntu 12.04 LTS
+  * Apache 2.2.22
+  * Percona Server 5.5
+  * PHP 5.3.28
+  * Varnish 3
+  * Memcached 1.4.13
+  * Drush 6.2.0
+
+
+WHO CAN USE UNDINE?
+-------------------
+
+In short, any developer or themer can start using Undine in a matter of minutes,
+although the full benefits will be reaped by those whose production server
+configurations already resemble the VM.
+
+While designed to mimic the Acquia cloud (making it ideal as a standard
+environment for teams and consultants who deploy there), Undine may also be
+useful for developers who just need a local environment and do not necessarily
+need consistency with any given production platform. It also offers a means for
+others to explore using Vagrant and Puppet without heavily investing in up-front
+configuration.
+
+Those deploying on other production stacks (say, CentOS running nginx) could
+of course still use Undine to get an environment up and running quickly,
+though they will obviously not have the benefit of developing on the same stack
+they are deploying to.
+
+
+INSTALLATION
+------------
+
+Please review the accompanying `INSTALL.txt` for detailed instructions on the
+installation and configuration of Undine.
+
+
+DESIGN DECISIONS
+----------------
+
+Although Ariadne currently exists as an alternative to Undine, its roots in Chef
+for provisioning may make it less preferable for those who would prefer to
+manage their configurations in Puppet. In this regard, Undine exists as an
+alternative to Ariadne.
+
+Furthermore, both to allow for easier distribution on Drupal.org and for the
+sake of producing a simple, easy-to-use local development solution with maximum
+extensibility, external dependencies are kept to an absolute minimum. Those
+dependencies that do exist (particularly signed packages for PHP, Git and
+Percona Server) are abstracted away from the end user, so all they need to worry
+about is using "vagrant up" to get an environment up and running.
+
+When designing the Undine Puppet modules (on which the core "undine" module
+depends), every effort was made to eliminate cross-module dependencies. Although
+a module can (and often must) depend on another module, no module should have
+to be aware of the internal workings of another module for proper dep-solving.
+As a result, these points of intersection (such as conf.d files for php.ini) are
+exposed as defined resources of a given class. This way, other modules may
+append to the configuration provided while notifying services to update, without
+necessarily having to be aware of those services (or the inner workings of their
+containing class) in the first place.
+
+To allow site declarations to be more portable, it was decided to have them
+contained in Puppet modules, referenced from the sites directory (which is added
+to the modulepath in the Vagrantfile). However, these must still be included in
+the main manifest (manifests/site.pp) file. Alternatives to this approach are
+still being evaluated, in hopes of some sort of autoloader (or at least another
+configuration file to notify Puppet of declared sites).
+
+When using SSH to authenticate, it is strongly advised to rely on the SSH agent
+forwarding feature of Vagrant (enabled in Undine by default), in which your own
+SSH credentials on your host machine are securely forwarded through the guest VM
+when required. However, when using the provisioner, this also means that you
+must add an entry to your known_hosts file for root (such as through the defined
+type undine_ssh::known_host) for each trusted hostname and key pair. Although
+possible to simply disable SSH strict host checking, this check plays an
+important role in preventing man-in-the-middle attacks, so it was decided to
+require users to whitelist known hosts for use with the provisioner rather than
+circumvent the feature entirely.
+
+As for why Puppet modules like puppetlabs/stdlib aren't used, the short answer
+is licensing restrictions. puppetlabs/stdlib in particular is released under the
+Apache 2.0 licence, which is not GPLv2+ compatible.
+
+
+FUTURE DIRECTION
+----------------
+
+It is the goal of the Undine project to continue simplifying the process of
+setting up a local development environment, making common configurations easy
+and advanced configurations possible. Additional support for multisite
+configurations, additional types of database backends and support for advanced
+caching strategies may be added in the future.
+
+
+FEATURES ADDED BY X-TEAM
+------------------------
+  * Varnish
+  * Memcached
+  * User controlled configuration (config.json)
+  * Additional system tools for development
+
+
+SPONSORSHIP
+-----------
+
+Ongoing development is sponsored by Stevens Institute of Technology. Additional
+development and enhancement is sponsored by [X-Team](http://x-team.com), global development team of
+100+ carefully chosen specialists.

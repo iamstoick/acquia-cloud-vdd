@@ -1,0 +1,266 @@
+CONTENTS OF THIS FILE
+---------------------
+
+* System requirements
+* Installation
+* Declaring a new Drupal site
+* Overriding Undine's default configuration
+* More information
+
+SYSTEM REQUIREMENTS
+-------------------
+
+Undine requires:
+
+- 1GB RAM (to be dedicated to the virtual machine)
+- VirtualBox 4.2.0 (or greater)
+- Vagrant 1.3.5 (or greater)
+- A stable Internet connection during provisioning
+
+INSTALLATION
+------------
+
+1. Download and install VirtualBox and Vagrant for your OS.
+
+2. Download and extract Undine.
+
+3. Install the precise32 base box for Vagrant.
+
+Undine uses a base box (base VM) of Ubuntu Lucid as a foundation, before
+performing additional configuration through the Puppet standalone. This base box
+is installed using the following command:
+
+  `vagrant box add precise32 http://files.vagrantup.com/precise32.box`
+
+If you have local copy of precise32.
+
+  `vagrant box add precise32 /path/to/precise32.box`
+
+4. Choose whether or not to use NFS to share the www directory. You can set the
+value of `nfs` to `true` if you want to use NFS in `conf/config.json`.
+
+By default, Vagrant will handle shared directories (such as `docroot` on the host and
+`/var/www` on the VM) using VirtualBox, which is known to be non-performant for
+large sets of files. However, Undine comes with a default configuration that
+uses NFS instead, which may vastly improve your experience when accessing your
+sites in the browser.
+
+In order to use NFS, you must first install the packages `nfs-kernel-server`,
+`nfs-common` and `portmap` on your host system. Undine takes care of configuring the
+VM for you.
+
+Those who cannot or do not wish to use NFS should set the value of `nfs` to
+`false` in `conf/config.json` and use VirtualBox shared directories as normal.
+
+5. Copy `./conf/default.config.json` to `./conf/config.json` and make any
+necessary changes.
+
+6. Copy `./manifests/default.site.pp` to `site.pp` and make any necessary changes.
+
+The `site.pp` file (now located in the manifests directory of your installation
+of Undine) is responsible for including all of the Puppet modules necessary
+for Undine to run. This includes any changes to your environment or Drupal sites
+you have declared: each will require an `include` entry in this file.
+
+Please see the documentation for `Declaring a Drupal site` and `Overrding
+Undine's default configuration` for more information.
+
+7. Set up your VM using Vagrant.
+
+To set up your virtual machine using Vagrant, open the terminal for your
+operating system. From your Undine directory, run the following command:
+
+  `vagrant up`
+
+This will download a Vagrant base box (compatible with VirtualBox), configure it
+according to the Vagrantfile provided, and manage provisioning using the Puppet
+manifest and modules provided (including any in the sites directory of your
+Undine install, as well as any environment configuration in the env directory).
+
+This may take a few moments depending on the speed of your host
+and your network connnection.
+
+7. Confirm your Web server configuration.
+
+Visit `http://localhost:8080` in your Web browser. You should see an "It works!"
+page served by Apache. Now, do the same using `https://localhost:8443`.
+
+Port 80 on the guest machine (managed by Undine) is being forwarded to port 8080
+on your host machine. Likewise, https traffic on port 443 is being forwarded
+to port 8443. Remember to provide these ports when viewing your site on the
+host machine.
+
+8. Connect to your VM to confirm installation.
+
+In your open terminal, from the Undine directory, use the following command to
+connect to your virtual machine:
+
+  `vagrant ssh`
+
+This aptly-named command will allow you to connect to your VM via SSH. The motd
+when you log in will provide a few reminders about how your environment is
+configured by default.
+
+From here, you may work on the VM as though it were any other remote server,
+with one notable exception: the `/var/www` directory of the VM is shared with the
+www directory of your Undine installation on the host. This means that you may
+use your IDE of choice on your host, and point it to `/path/to/undine/docroot`. Your
+changes will be reflected on both the host and the guest VM.
+
+DECLARING A NEW DRUPAL SITE
+---------------------------
+
+It is possible to declare an entirely new Drupal site to work with using Undine.
+Doing so will allow you to manage the database, database user and site
+installation process in a declarative way.
+
+Undine sites are fundamentally user-defined Puppet modules, on a different
+section of the modulepath for the sake of organization. As such, all of Puppet's
+functionality is at your disposal, though prior experience with Puppet is not
+necessary to use this feature.
+
+1. Create the directory for your site configuration.
+
+Within the sites directory of your Undine installation, create a directory with
+the following structure, where `mysite` is the name of your site:
+
+```
+/path/to/undine/sites/
++--mysite/
+   +--manifests
+```
+
+To recap, you will create a `mysite` directory in Undine's `sites` directory,
+with subdirectories called `manifests` and `files`.
+
+2. Create the init.pp for your site configuration.
+
+When configuring your environment, Undine will look at the init.pp file in your
+manifests directory for the given site. Create this text file now.
+
+Your directory structure will now look like the following:
+
+/path/to/undine/sites/
++--mysite/
+   +--manifests
+      +--init.pp
+
+3. Configure your site using init.pp.
+
+Copy `/examples/sites_example` for inspiration and additional details. In
+brief, the init.pp file for each site will contain the following:
+
+```
+  * A "class mysite { }" block for all of your config.
+  * The line "require undine". This is necessary to invoke Undine's features.
+  * An "undine::drupal_instance { }" block to declare the Drupal site, in the
+    following format:
+
+  undine::drupal_instance { "mysite":
+    project_name => 'mysite',
+    site_name    => 'My Drupal Site',
+    db_name      => 'mysite_db',
+    db_user      => 'mysite_db_user',
+    db_pass      => 'mysite_db_pass',
+  }
+```
+
+You will note that this block (a "resource" in Puppet parlance) simply accepts
+a series of key-value pairs that define the Drupal instance, to be installed in
+/var/www/<project_name>. Only the above fields are required, though it is
+possible to define much of the behavior of the site through additional optional
+fields. Review the documentation of undine::drupal_instance for more details.
+
+4. Add your site to the main manifest.
+
+In the manifests directory of your Undine installation (not your defined site),
+add the following to the end of the site.pp file:
+
+  `include mysite`
+
+This tells Undine to include your site when building out the virtual machine.
+
+5. Run provisioning again to see the changes reflected.
+
+If you didn't already run "vagrant up", doing so now will create and install your
+Drupal site as you've defined it. If you have, you'll need to run the following
+command from the Undine directory in your terminal:
+
+  `vagrant provision`
+
+Note that this will reset _all_ configuration to the defaults declared in Undine,
+not just those in your sites directory.
+
+OVERRIDING UNDINE'S DEFAULT CONFIGURATION
+-----------------------------------------
+
+Although Undine is designed to be fully-functional out of the box, sometimes
+advanced users may need to fine-tune additional configuration, such as adjusting
+the memory available to PHP or MySQL (NOTE: those looking to increase memory
+limits will probably want to adjust the memory available to the VM in Undine's
+Vagrantfile first!).
+
+To separate this configuration from site-level configuration, users may declare
+any changes to the way Undine should be built using the ./env directory. As with
+sites, these are fundamentally Puppet modules that are split away from Undine
+core (./modules) by convention.
+
+1. Create the directory for your environment configuration.
+
+Within the env directory of your Undine installation, create a directory with
+the following structure, where "myenv" is the name of your environment:
+
+/path/to/undine/sites/
++--myenv/
+   +--manifests
+
+To recap, you will create a "myenv" directory in Undine's "env" directory,
+with subdirectories called "manifests" and "files."
+
+2. Create the init.pp for your environment configuration.
+
+When configuring your environment, Undine will look at the init.pp file in your
+manifests directory. Create this text file now.
+
+Your directory structure will now look like the following:
+
+```
+/path/to/undine/sites/
++--myenv/
+   +--manifests
+      +--init.pp
+```
+
+3. Configure your environment using init.pp.
+
+Refer to /examples/env_example for inspiration and additional details. In
+brief, the init.pp file for each site will contain a "class myenv { }" block
+containing all of your configuration.
+
+4. Add your environment configuration to the main manifest.
+
+In the manifests directory of your Undine installation (not your environment),
+add the following to the end of the site.pp file:
+
+  `include myenv`
+
+This tells Undine to include your config when building out the virtual machine.
+
+5. Run provisioning again to see the changes reflected.
+
+If you didn't already run "vagrant up", doing so now will create and install your
+environment as you've defined it. If you have, you'll need to run the following
+command from the Undine directory in your terminal:
+
+  `vagrant provision`
+
+Note that this will reset _all_ configuration to the defaults declared in Undine,
+not just those in your env directory.
+
+MORE INFORMATION
+----------------
+
+For more information on using Vagrant and Puppet, refer to the following:
+
+  * Vagrant Documentation: http://docs-v1.vagrantup.com/v1/docs/
+  * Learning Puppet: http://docs.puppetlabs.com/learning/

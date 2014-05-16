@@ -1,0 +1,36 @@
+<VirtualHost *:1000>
+        ServerAdmin webmaster@localhost
+        ServerName <%= @server_name %>
+
+        DocumentRoot <%= @document_root %>
+        <Directory <%= @document_root %>>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog /var/log/apache2/<%= @server_filename %>-error.log
+        CustomLog /var/log/apache2/<%= @server_filename %>-access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+        SSLEngine on
+
+        SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
+        SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+
+        ServerAdmin webmaster@localhost
+        ServerName <%= @server_name %>
+
+        DocumentRoot <%= @document_root %>
+        <Directory <%= @document_root %>>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog /var/log/apache2/ssl-<%= @server_filename %>-error.log
+        CustomLog /var/log/apache2/ssl-<%= @server_filename %>-access.log combined
+</VirtualHost>

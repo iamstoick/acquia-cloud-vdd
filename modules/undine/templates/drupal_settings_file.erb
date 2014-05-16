@@ -1,0 +1,41 @@
+<?php
+# <%= @path %>
+# Managed by Undine.
+
+<% if defined?(@unset) %>
+  <% @unset.each do |var| %>
+unset(<%= var %>); 
+  <% end %>
+<% end %>
+
+<% @databases.each do |connection_key, target| %>
+  <% target.each do |target_key, connection_info| %>
+$databases['<%= connection_key %>']['<%= target_key %>'] = array(
+    <% connection_info.each do |k, v| %>
+  '<%= k %>' => '<%= v %>', 
+    <% end %>
+);
+  <% end %>
+<% end %>
+
+<% if defined?(@update_free_access) %>
+$update_free_access = <%= @update_free_access %>;
+<% end %>
+
+<% if defined?(@hash_salt) %>
+$hash_salt = '<%= @hash_salt %>';
+<% end %>
+
+<% if defined?(@cookie_domain) %>
+$cookie_domain = '<%= @cookie_domain %>';
+<% end %>
+
+<% if defined?(@base_url) %>
+$base_url = '<%= @base_url %>';
+<% end %>
+
+<% if defined?(@conf) %>
+  <% @conf.each do |k, v| %>
+$conf['<%= k %>'] = '<%= v %>';
+  <% end %>
+<% end %>

@@ -1,0 +1,14 @@
+
+Welcome to Undine!
+
+SSH agent forwarding is enabled by default. You may use any SSH keys made
+available on your host system, without manually transferring them here.
+
+Port 80 (http) on this VM is forwarded to port 8080 on your host by default.
+Likewise, port 443 (https) on the VM is forwarded to host port 8443.
+
+Your www directory on the host is shared with /var/www on the VM by default.
+
+If you want to use XHProf with devel, the directory is /usr/share/php53-xhprof.
+By default, XHProf runs are accessible at http://localhost:8080/xhprof_html.
+

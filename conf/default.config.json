@@ -1,0 +1,27 @@
+{
+  "name": "precise32",
+  "box_url": "http://files.vagrantup.com/precise32.box",
+  "hostname": "my-hostname",
+  "aliases": {
+    // The key is used as a drush alias
+    "fox": "local.domain.com"
+  },
+  "ip": "192.168.44.45",
+  "synced_folder": {
+    "host_path": "./docroot",
+    "guest_path": "/var/www"
+  },
+  "vm_gui": false,
+  "vm_name": "acquia-drupal-platform",
+  "ports": {
+    "http_host_varnish": 8080,
+    "http_guest_varnish": 80,
+    "https_host": 8443,
+    "https_guest": 443,
+    "http_guest_apache": 1000,
+    "http_host_apache": 10000
+  },
+  "memory": 1024,
+  // Set to false if your system don't support NFS
+  "nfs": false
+}

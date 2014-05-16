@@ -1,0 +1,4 @@
+[mysqld]
+
+# SAFETY #
+max-allowed-packet             = 32M

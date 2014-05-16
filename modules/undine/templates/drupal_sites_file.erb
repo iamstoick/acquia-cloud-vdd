@@ -1,0 +1,9 @@
+<?php
+# <%= @path %>
+# Managed by Undine.
+
+<% if defined?(@sites) %>
+  <% @sites.each do |url, site| %>
+$sites['<%= url %>'] = '<%= site %>'; 
+  <% end %>
+<% end %>

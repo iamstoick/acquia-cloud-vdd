@@ -1,0 +1,7 @@
+This project is impossible without this awesome guys.
+
+1. David Watson
+   Creator of Undine, from Stevens Institute of Technology.
+
+2. X-Team
+   Sponsored the additional development based on the newest Acquia platform.

@@ -1,0 +1,34 @@
+{
+  "checksums": {
+    "Rakefile": "f39450f89f23380c06f6d6a36d0ec017",
+    "Modulefile": "6b72dd1ae54c94c9f6744bbd6880087d",
+    "templates/memcached.conf.erb": "f51e3a72142c2341dcc6f0fb36c3d129",
+    "manifests/init.pp": "a3614018296942a7af7ca5d0e8b1d8a1",
+    "manifests/package.pp": "fb22a97dfbf320dca8445e8a69c51992",
+    "Gemfile": "cdacae4cd0359dd45be29b21fc86698b",
+    "README.md": "143abfc419ff7260f42d80cf67b72163",
+    "spec/classes/service_spec.rb": "ee871a295caa6a3a85df23884be4ed5d",
+    "manifests/service.pp": "095c7f42a551b1e47a43e41cf359518d",
+    "Gemfile.lock": "816c37cb72e123ae47c232b38c6bd687",
+    "templates/default.erb": "a0916cf78b3bd2a244f47b8436d86c79",
+    "spec/classes/config_spec.rb": "4fa63dbae8302a1952ea9ada8a48ae5a",
+    "spec/fixtures/manifests/site.pp": "d41d8cd98f00b204e9800998ecf8427e",
+    "spec/spec_helper.rb": "792eeb7aa7edafb93e2bc1d27c5e75c5",
+    "manifests/config.pp": "ecd7ef803b55b6b13ad4822fdb119d6a",
+    "spec/classes/package_spec.rb": "d09145b422d647cebf84c962f40a1002"
+  },
+  "dependencies": [
+
+  ],
+  "summary": "Memcache Module",
+  "source": "git@github.com:jbussdieker/puppet-memcache.git",
+  "description": "UNKNOWN",
+  "author": "Joshua B. Bussdieker",
+  "types": [
+
+  ],
+  "license": "Apache License, Version 2.0",
+  "version": "0.0.2",
+  "name": "jbussdieker-memcache",
+  "project_page": "UNKNOWN"
+}

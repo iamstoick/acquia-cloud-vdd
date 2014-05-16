@@ -1,0 +1,7 @@
+DO NOT DELETE THIS DIRECTORY.
+
+This directory is used by Undine to support a shared directory between
+the Undine VM and the host OS. This makes it possible to modify files
+in your IDE of choice on the host OS while serving them via Undine.
+
+For more information, please review the documentation.
