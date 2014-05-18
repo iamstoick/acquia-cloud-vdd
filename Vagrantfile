@@ -5,6 +5,8 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  host = RbConfig::CONFIG['host_os']
+
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
@@ -62,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   if vm_config["nfs"] == true
     # Set no_root_squash to prevent NFS permissions errors on Linux during
     # provisioning, and maproot=0:0 to correctly map the guest root user.
-    if (/darwin/ =~ RUBY_PLATFORM) != nil
+    if (/darwin/ =~ host) != nil
       config.vm.synced_folder vm_config["synced_folder"]["host_path"],
         vm_config["synced_folder"]["guest_path"],
         type: "nfs", :bsd__nfs_options => ["maproot=0:0"]
@@ -79,13 +81,27 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
 
-  # TODO: Revert before commit!
   config.vm.provider :virtualbox do |vb|
     # Don't boot with headless mode
     vb.gui = false
     vb.name = vm_config['vm_name']
 
-    vb.customize ["modifyvm", :id, "--memory", vm_config["memory"]]
+    # Give VM 1/4 system memory & access to all cpu cores on the host
+    if host =~ /darwin/
+      cpus = `sysctl -n hw.ncpu`.to_i
+      # sysctl returns Bytes and we need to convert to MB
+      mem = `sysctl -n hw.memsize`.to_i / 1024 / 1024 / 4
+    elsif host =~ /linux/
+      cpus = `nproc`.to_i
+      # meminfo shows KB and we need to convert to MB
+      mem = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024 / 4
+    else # sorry Windows folks, I can't help you
+      cpus = 2
+      mem = 1024
+    end
+
+    vb.customize ["modifyvm", :id, "--memory", mem]
+    vb.customize ["modifyvm", :id, "--cpus", cpus]
   end
 
   config.vm.provision :puppet, :facter => { "host_uid" => Process.uid, "host_gid" => Process.gid } do |puppet|
