@@ -16,7 +16,7 @@
 #
 # Translates "my.localhost.test" to "my-localhost-test"
 #
-# $name = get_project_name('my.localhost.test')
+#   $name = get_project_name('my.localhost.test')
 #
 module Puppet::Parser::Functions
   newfunction(:get_server_filename, :type => :rvalue) do |args|

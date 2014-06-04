@@ -32,7 +32,7 @@ module Puppet::Parser::Functions
     db_filtered = {}
 
     # Remove the following keys
-    undine_db_keys = ['src_ssh_user', 'src_ssh_host', 'src_ssh_known_host_key', 'src_db_name', 'src_db_user', 'src_db_pass']
+    undine_db_keys = ['src_ssh_user', 'src_hostname', 'src_ssh_known_host_key', 'src_db_name', 'src_db_user', 'src_db_pass']
 
     # Take the difference of each database with the key arguments only Undine requires.
     databases.each do |key, db_targets|

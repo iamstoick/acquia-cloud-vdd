@@ -12,9 +12,9 @@
 #
 # === Parameters
 #
-# [*dest_dir*]
+# [*dest_path*]
 #   The destination directory on the local VM. Defaults to the resource title.
-# [*src_dir*]
+# [*src_path*]
 #   The source directory from which to rsync files. Provide src_hostname to
 #   rsync from a remote host.
 # [*src_hostname*]
@@ -28,23 +28,23 @@
 #
 # Simple local usage.
 # 
-# undine_rsync::directory { '/path/to/dest':
-#   src_dir => '/path/to/my/src',
-# }
+#   undine_rsync::directory { '/path/to/dest':
+#     src_path => '/path/to/my/src',
+#   }
 # 
 # Usage via SSH with a defined remote host and associated known_host entry.
 # 
-# undine_rsync::directory { '/path/to/dest':
-#   src_dir => '/path/to/my/remote/src',
-#   src_hostname => 'example.com',
-#   src_known_host_key => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQqEyJJthk/DTVaRmJW ...',
-#   src_username => 'jsmith',
-# }
+#   undine_rsync::directory { '/path/to/dest':
+#     src_path => '/path/to/my/remote/src',
+#     src_hostname => 'example.com',
+#     src_known_host_key => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQqEyJJthk/DTVaRmJW ...',
+#     src_username => 'jsmith',
+#   }
 # 
 # 
 define undine_rsync::directory (
-  $src_dir,
-  $dest_dir = $title,
+  $src_path,
+  $dest_path = $title,
   $src_username = undef,
   $src_hostname = undef,
   $src_known_host_key = undef,
@@ -73,7 +73,7 @@ define undine_rsync::directory (
     $host = ''
   }
 
-  $exec_str = "/usr/bin/rsync --timeout=0 -rltgoDvz -e ssh ${user}${host}${src_dir} ${dest_dir}"
+  $exec_str = "/usr/bin/rsync --timeout=0 -rltgoDvz -e ssh ${user}${host}${src_path} ${dest_path}"
 
   if $src_known_host_key != undef {
     if !defined(Undine_ssh::Known_host["${src_hostname}"]) {
@@ -92,14 +92,14 @@ define undine_rsync::directory (
     require => Package['rsync'],
     logoutput => $logoutput,
   }
-  exec { "rsync-to-${dest_dir}-ownership":
-    command => "/bin/chown -R ${host_uid}:20 ${dest_dir}",
+  exec { "rsync-to-${dest_path}-ownership":
+    command => "/bin/chown -R ${host_uid}:20 ${dest_path}",
     require => Exec["${exec_str}"],
     logoutput => $logoutput,
   }
-  exec { "rsync-to-${dest_dir}-permissions":
-    command => "/bin/chmod -R 775 ${dest_dir}",
-    require => Exec["rsync-to-${dest_dir}-ownership"],
+  exec { "rsync-to-${dest_path}-permissions":
+    command => "/bin/chmod -R 775 ${dest_path}",
+    require => Exec["rsync-to-${dest_path}-ownership"],
     logoutput => $logoutput,
   }
 }

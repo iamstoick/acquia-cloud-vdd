@@ -18,11 +18,11 @@
 #
 # Maps http://localhost:8080/example/foo to the example subdirectory of sites.
 #
-# undine::drupal_sites_file { '/var/www/mysite/sites/sites.php':
-#   sites => {
-#     '8080.localhost.example' => 'example',
+#   undine::drupal_sites_file { '/var/www/mysite/sites/sites.php':
+#     sites => {
+#       '8080.localhost.example' => 'example',
+#     }
 #   }
-# }
 #
 define undine::drupal_sites_file (
   $path = $title,

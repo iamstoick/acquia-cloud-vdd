@@ -23,8 +23,8 @@
 #
 # Both examples assign 'mysite' to $name.
 #
-# $name = get_project_name('/var/www/html/mysite')
-# $name = get_project_name('/var/www/html/mysite/')
+#   $name = get_project_name('/var/www/html/mysite')
+#   $name = get_project_name('/var/www/html/mysite/')
 #
 module Puppet::Parser::Functions
   newfunction(:get_project_name, :type => :rvalue) do |args|

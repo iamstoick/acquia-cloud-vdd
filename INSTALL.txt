@@ -12,9 +12,9 @@ SYSTEM REQUIREMENTS
 
 Undine requires:
 
-- 1GB RAM (to be dedicated to the virtual machine if on Windows)
-- VirtualBox 4.3.0 (or greater)
-- Vagrant 1.5 (or greater)
+- 1GB RAM (to be dedicated to the virtual machine)
+- VirtualBox 4.2.0 (or greater)
+- Vagrant 1.3.5 (or greater)
 - A stable Internet connection during provisioning
 
 INSTALLATION
@@ -147,29 +147,16 @@ Your directory structure will now look like the following:
 
 3. Configure your site using init.pp.
 
-Copy `/examples/sites_example` for inspiration and additional details. In
-brief, the init.pp file for each site will contain the following:
+Copy /examples/sites_example for inspiration and additional details. In
+brief, the init.pp file for each codebase will contain a "class mysite { }"
+block for all of your config. Typically, this consists of an 
+"undine::drupal_codebase { }" resource within to declare the Drupal platform,
+followed by any number of "undine::drupal_site { }" resources for any sites that
+live within (note that "default" is used for a single-site architecture).
 
-```
-  * A "class mysite { }" block for all of your config.
-  * The line "require undine". This is necessary to invoke Undine's features.
-  * An "undine::drupal_instance { }" block to declare the Drupal site, in the
-    following format:
-
-  undine::drupal_instance { "mysite":
-    project_name => 'mysite',
-    site_name    => 'My Drupal Site',
-    db_name      => 'mysite_db',
-    db_user      => 'mysite_db_user',
-    db_pass      => 'mysite_db_pass',
-  }
-```
-
-You will note that this block (a "resource" in Puppet parlance) simply accepts
-a series of key-value pairs that define the Drupal instance, to be installed in
-/var/www/<project_name>. Only the above fields are required, though it is
-possible to define much of the behavior of the site through additional optional
-fields. Review the documentation of undine::drupal_instance for more details.
+You will note that these resources are simply a series of key-value pairs that
+define the configuration, and otherwise function the exact same as any other
+Puppet resource. See the documentation in the /doc directory for details.
 
 4. Add your site to the main manifest.
 
@@ -235,7 +222,7 @@ Your directory structure will now look like the following:
 
 Refer to /examples/env_example for inspiration and additional details. In
 brief, the init.pp file for each site will contain a "class myenv { }" block
-containing all of your configuration.
+containing all of your configuration, as with the sites example above.
 
 4. Add your environment configuration to the main manifest.
 

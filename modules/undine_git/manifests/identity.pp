@@ -13,9 +13,9 @@
 #
 # === Examples
 #
-# undine_git::identity { "Jane Smith":
-#   email => 'jsmith@example.com',
-# }
+#   undine_git::identity { "Jane Smith":
+#     email => 'jsmith@example.com',
+#   }
 #
 define undine_git::identity (
   $git_name = $title,

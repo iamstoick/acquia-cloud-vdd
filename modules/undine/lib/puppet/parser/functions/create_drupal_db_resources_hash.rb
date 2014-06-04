@@ -24,7 +24,7 @@ module Puppet::Parser::Functions
     site_name = args[1]
     resources = {}
 
-    valid_keys = ['driver', 'database', 'username', 'password', 'su_user', 'su_pass', 'src_ssh_user', 'src_ssh_host', 'src_ssh_known_host_key', 'src_db_name', 'src_db_user', 'src_db_pass']
+    valid_keys = ['driver', 'database', 'username', 'password', 'su_user', 'su_pass', 'src_ssh_user', 'src_hostname', 'src_ssh_known_host_key', 'src_db_name', 'src_db_user', 'src_db_pass']
 
     # Intersect each database with the key arguments drupal_db requires.
     db_conn_keys.each do |key, db_targets|

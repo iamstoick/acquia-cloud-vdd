@@ -24,7 +24,7 @@
 #   Optional. The password to the superuser account. Defaults to no password.
 # [*src_ssh_user*]
 #   Optional. The remote ssh user to use when connecting to the database.
-# [*src_ssh_host*]
+# [*src_hostname*]
 #   Optional. The host on which the remote database resides. Must be supplied
 #   when retrieving a database from a remote host via SSH.
 # [*src_ssh_known_host_key*]
@@ -49,18 +49,18 @@
 # Locally, the database user mysite_db_admin will have all of the necessary
 # permissions for this database.
 # 
-# undine_percona::database { 'mysite_db':
-#   username => 'mysite_db_admin',
-#   password => 'foobarbazbang',
-#   su_user => 'superuser',
-#   su_pass => 'correcthorsebatterystaple',
-#   src_ssh_user => 'user',
-#   src_ssh_host => 'ssh.example.com',
-#   src_ssh_known_host_key => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQqEyJJthk/ ...',
-#   src_db_name => 'rmdb',
-#   src_db_user => 'remote_mysql_user',
-#   src_db_pass => 'correcthorsebatterystaple',
-# }
+#   undine_percona::database { 'mysite_db':
+#     username => 'mysite_db_admin',
+#     password => 'foobarbazbang',
+#     su_user => 'superuser',
+#     su_pass => 'correcthorsebatterystaple',
+#     src_ssh_user => 'user',
+#     src_hostname => 'ssh.example.com',
+#     src_ssh_known_host_key => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQqEyJJthk/ ...',
+#     src_db_name => 'rmdb',
+#     src_db_user => 'remote_mysql_user',
+#     src_db_pass => 'correcthorsebatterystaple',
+#   }
 #
 define undine::drupal_db (
   $database = $title,
@@ -70,7 +70,7 @@ define undine::drupal_db (
   $su_user = 'root',
   $su_pass = undef,
   $src_ssh_user = undef,
-  $src_ssh_host = undef,
+  $src_hostname = undef,
   $src_ssh_known_host_key = undef,
   $src_db_name = undef,
   $src_db_user = undef,
@@ -85,7 +85,7 @@ define undine::drupal_db (
       su_user => $su_user,
       su_pass => $su_pass,
       src_ssh_user => $src_ssh_user,
-      src_ssh_host => $src_ssh_host,
+      src_hostname => $src_hostname,
       src_ssh_known_host_key => $src_ssh_known_host_key,
       src_db_name => $src_db_name,
       src_db_user => $src_db_user,

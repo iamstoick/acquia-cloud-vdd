@@ -9,13 +9,7 @@
 # declared automatically by the undine class, which all Undine sites should use.
 #
 class undine_xhprof {
-
-  undine_apt::ppa { 'skettler/php':
-    ppa_user => 'skettler',
-    ppa_name => 'php',
-    source_list_d_filename => 'skettler-php-xhprof-precise.list',
-    source_list_d_source => 'puppet:///modules/undine_php/skettler-php-xhprof-precise.list',
-  }
+  require undine_php
 
   package { "php53-xhprof":
     ensure => installed,

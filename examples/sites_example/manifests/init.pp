@@ -16,9 +16,6 @@
 # "vagrant provision" (if you have), your changes will be reflected.
 #
 class sites_example {
-  # Require the undine package to ensure dependencies are met.
-  require undine
-
   # Drupal sites are configured by declaring an undine::drupal_codebase
   # resource, followed by any number of undine::drupal_site resources that
   # require it. This allows for configuration of both single and multisite 
@@ -63,7 +60,7 @@ class sites_example {
         'rel_path' => 'sites/default/files',
       },
       'private' => {
-        'path' => '/path/to/private-files',
+        'path' => '/var/www/mysite/sites/default/files/private',
       },
     },
     settings => {

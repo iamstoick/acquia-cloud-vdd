@@ -25,9 +25,9 @@
 #
 # === Examples
 #
-# undine_apache::misc_conf_file { '/etc/php/php.ini':
-#   source => 'puppet:///modules/my_php_module/php.ini',
-# }
+#   undine_apache::misc_conf_file { '/etc/php/php.ini':
+#     source => 'puppet:///modules/my_php_module/php.ini',
+#   }
 #
 define undine_apache::misc_conf_file (
   $content = undef,

@@ -27,17 +27,17 @@
 # To use packages from a PPA, first declare the PPA, then require the PPA
 # resource from the package resource you want to declare.
 #
-# undine_apt::ppa { 'git-core/git':
-#   ppa_user => 'git-core',
-#   ppa_name => 'git',
-#   source_list_d_filename => 'git-core-ppa-precise.list'
-#   source_list_d_source => 'puppet:///modules/my_git_module/git-core-ppa-precise.list',
-# }
+#   undine_apt::ppa { 'git-core/git':
+#     ppa_user => 'git-core',
+#     ppa_name => 'git',
+#     source_list_d_filename => 'git-core-ppa-precise.list'
+#     source_list_d_source => 'puppet:///modules/my_git_module/git-core-ppa-precise.list',
+#   }
 #
-# package { 'git':
-#   require Undine_apt::Ppa['git-core/git'],
-#   ensure => installed,
-# }
+#   package { 'git':
+#     require Undine_apt::Ppa['git-core/git'],
+#     ensure => installed,
+#   }
 #
 define undine_apt::ppa (
   $ppa_user,

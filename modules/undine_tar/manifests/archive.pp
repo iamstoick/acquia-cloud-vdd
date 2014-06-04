@@ -28,18 +28,18 @@
 #
 # Simple local usage.
 # 
-# undine_tar::archive { '/path/to/dest':
-#   src_path => '/path/to/my/src/archive.tar',
-# }
+#   undine_tar::archive { '/path/to/dest':
+#     src_path => '/path/to/my/src/archive.tar',
+#   }
 # 
 # Usage via wget via basic auth, with gzip support.
 # 
-# undine_tar::archive { '/path/to/dest':
-#   src_path => 'http://example.com/path/to/my/archive.tar.gz',
-#   src_username => 'jsmith',
-#   src_password => 'correcthorsebatterystaple',
-#   gzip => true,
-# }
+#   undine_tar::archive { '/path/to/dest':
+#     src_path => 'http://example.com/path/to/my/archive.tar.gz',
+#     src_username => 'jsmith',
+#     src_password => 'correcthorsebatterystaple',
+#     gzip => true,
+#   }
 #
 define undine_tar::archive (
   $path = $title,

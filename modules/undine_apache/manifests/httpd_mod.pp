@@ -26,16 +26,16 @@
 #
 # === Examples
 #
-# undine_apache::http_mod { 'mod_rewrite':
-#   mod_name => 'rewrite',
-#   load_source => 'puppet:///modules/my_rw_module/rewrite.load',
-# }
+#   undine_apache::http_mod { 'mod_rewrite':
+#     mod_name => 'rewrite',
+#     load_source => 'puppet:///modules/my_rw_module/rewrite.load',
+#   }
 #
-# undine_apache::http_mod { 'mod_ssl':
-#   mod_name => 'ssl',
-#   load_source => 'puppet:///modules/my_ssl_module/ssl.load',
-#   conf_source => 'puppet:///modules/my_ssl_module/ssl.conf',
-# }
+#   undine_apache::http_mod { 'mod_ssl':
+#     mod_name => 'ssl',
+#     load_source => 'puppet:///modules/my_ssl_module/ssl.load',
+#     conf_source => 'puppet:///modules/my_ssl_module/ssl.conf',
+#   }
 #
 define undine_apache::httpd_mod (
   $mod_name,

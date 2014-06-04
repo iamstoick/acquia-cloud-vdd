@@ -20,9 +20,9 @@
 #
 # === Examples
 #
-# undine_percona::misc_conf_file { '/etc/mysql/conf.d/override.cnf':
-#   source => 'puppet:///modules/my_percona_module/override.cnf',
-# }
+#   undine_percona::misc_conf_file { '/etc/mysql/conf.d/override.cnf':
+#     source => 'puppet:///modules/my_percona_module/override.cnf',
+#   }
 #
 define undine_percona::misc_conf_file (
   $content = undef,

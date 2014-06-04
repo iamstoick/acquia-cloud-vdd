@@ -24,8 +24,8 @@
 #
 # Both examples assign '/var/www/html' to $basepath.
 #
-# $basepath = get_project_basepath('/var/www/html/mysite')
-# $basepath = get_project_basepath('/var/www/html/mysite/')
+#   $basepath = get_project_basepath('/var/www/html/mysite')
+#   $basepath = get_project_basepath('/var/www/html/mysite/')
 #
 module Puppet::Parser::Functions
   newfunction(:get_project_basepath, :type => :rvalue) do |args|

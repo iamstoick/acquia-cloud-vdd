@@ -21,18 +21,21 @@
 #
 # === Examples
 #
-# undine_percona::user { 'mysite_db_user':
-#   password => 'correcthorsebatterystaple',
-#   grants => {
-#     'mysite_db' => [
-#       'SELECT', 
-#       'INSERT', 
-#       'UPDATE',
-#       'DELETE',
-#     ],
-#     'other_db' => ['ALL'],
-#   },
-# }
+# Creates mysite_db_user with a password of correcthorsebatterystaple and GRANTs
+# SELECT, INSERT, UPDATE and DELETE on mysite_db. Also grants ALL to other_db.
+#
+#   undine_percona::user { 'mysite_db_user':
+#     password => 'correcthorsebatterystaple',
+#     grants => {
+#       'mysite_db' => [
+#         'SELECT', 
+#         'INSERT', 
+#         'UPDATE',
+#         'DELETE',
+#       ],
+#       'other_db' => ['ALL'],
+#     },
+#   }
 #
 define undine_percona::user (
   $password,

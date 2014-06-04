@@ -55,7 +55,7 @@
 #   [*src_ssh_user*]
 #     Optional. The remote ssh user to use when connecting to the source 
 #     database.
-#   [*src_ssh_host*]
+#   [*src_hostname*]
 #     Optional. The host on which the remote database resides. Must be supplied
 #     when retrieving a database from a remote host via SSH.
 #   [*src_ssh_known_host_key*]
@@ -139,40 +139,40 @@
 # in via rsync on the same remote host. Finally, the settings.php file is 
 # generated with the the necessary database and public files configuration.
 #
-# undine::drupal_site { '/var/www/sites/default':
-#   databases => {
-#     'default' => {
+#   undine::drupal_site { '/var/www/sites/default':
+#     databases => {
 #       'default' => {
-#         'driver' => 'mysql',
-#         'database' => 'my_db',
-#         'username' => 'db_user',
-#         'password' => 'correcthorsebatterystaple',
-#         'src_ssh_user' => 'ssh_user',
-#         'src_ssh_host' => 'ssh.example.com',
-#         'src_ssh_known_host_key' => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQq ...',
-#         'src_db_name' => 'remote_src_db',
-#         'src_db_user' => 'remote_mysql_user',
-#         'src_db_pass' => 'correcthorsebatterystaple',
+#         'default' => {
+#           'driver' => 'mysql',
+#           'database' => 'my_db',
+#           'username' => 'db_user',
+#           'password' => 'correcthorsebatterystaple',
+#           'src_ssh_user' => 'ssh_user',
+#           'src_hostname' => 'ssh.example.com',
+#           'src_ssh_known_host_key' => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQq ...',
+#           'src_db_name' => 'remote_src_db',
+#           'src_db_user' => 'remote_mysql_user',
+#           'src_db_pass' => 'correcthorsebatterystaple',
+#         },
 #       },
 #     },
-#   },
-#   files => {
-#     'public' => {
-#       'path' => '/var/www/sites/default/files',
-#       'rel_path' => 'sites/default/files',
-#       'src_type' => 'rsync',
-#       'src_details' => {
-#         'src_dir' => '/var/www/path/to/my/files',
-#         'src_username' => 'ssh_user',
-#         'src_hostname' => 'ssh.example.com',
-#         'src_known_host_key' => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQq ...',
+#     files => {
+#       'public' => {
+#         'path' => '/var/www/sites/default/files',
+#         'rel_path' => 'sites/default/files',
+#         'src_type' => 'rsync',
+#         'src_details' => {
+#           'src_path' => '/var/www/path/to/my/files',
+#           'src_username' => 'ssh_user',
+#           'src_hostname' => 'ssh.example.com',
+#           'src_known_host_key' => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQq ...',
+#         },
 #       },
 #     },
-#   },
-#   settings => {
-#     path => '/var/www/sites/default/settings.php',
-#   },
-# }
+#     settings => {
+#       path => '/var/www/sites/default/settings.php',
+#     },
+#   }
 #
 
 define undine::drupal_site (
@@ -187,7 +187,7 @@ define undine::drupal_site (
     'su_user' => 'root',
     'su_pass' => undef,
     'src_ssh_user' => undef,
-    'src_ssh_host' => undef,
+    'src_hostname' => undef,
     'src_ssh_known_host_key' => undef,
     'src_db_name' => undef,
     'src_db_user' => undef,

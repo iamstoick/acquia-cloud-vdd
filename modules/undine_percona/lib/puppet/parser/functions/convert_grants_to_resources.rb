@@ -26,15 +26,15 @@
 #
 # GRANTs the CREATE, UPDATE, and DELETE permissions on my_database to my_user.
 #
-# $grants = {
-#   'my_database' => [
-#     'CREATE',
-#     'UPDATE',
-#     'DELETE',
-#   ],
-# }
-# $exec_hash = convert_grants_to_resources('my_user', $grants)
-# create_resources(exec, $exec_hash)
+#   $grants = {
+#     'my_database' => [
+#       'CREATE',
+#       'UPDATE',
+#       'DELETE',
+#     ],
+#   }
+#   $exec_hash = convert_grants_to_resources('my_user', $grants)
+#   create_resources(exec, $exec_hash)
 #
 module Puppet::Parser::Functions
   newfunction(:convert_grants_to_resources, :type => :rvalue) do |args|

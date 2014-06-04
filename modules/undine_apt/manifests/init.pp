@@ -7,13 +7,12 @@
 # declared automatically by declaring a undine_apt::ppa resource.
 #
 class undine_apt {
-
   exec { "apt-update":
     command => '/usr/bin/apt-get update',
   }
 
   package { "python-software-properties":
     ensure => installed,
-    #require => Exec['apt-update'],
+    require => Exec['apt-update'],
   }
 }

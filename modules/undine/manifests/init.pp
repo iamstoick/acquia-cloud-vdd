@@ -7,17 +7,11 @@
 # === Examples
 #
 # The primary use of the Undine class is to encapuslate basic provisioning for
-# the VM. It is intended to be declared in Puppet modules in the ./sites
-# directory using the require syntax, typically followed by one or more
-# undine::drupal_instance resources.
+# the VM. It is intended to be declared in Puppet modules in the ./sites 
+# directory using the require syntax, typically followed by a single 
+# undine::drupal_codebase and one or more undine::drupal_site resources.
 #
-# # sites/mysite/manifests/init.pp
-# require undine
-# undine::drupal_instance { "mysite":
-#   ...
-# }
-#
-class undine {
+class undine { 
   require undine_php
   require undine_apache
   require undine_apache_php

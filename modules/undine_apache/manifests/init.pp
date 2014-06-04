@@ -5,16 +5,21 @@
 # includes core apache configuration, ports configuration, default site
 # configuration, and Apache module installation and configuration.
 #
-# It should not be necessary to declare this class directly, as it will be
+# It should not be necessary to declare this class directly, as it will be 
 # declared automatically by the undine class, which all Undine sites should use.
 #
 # Integration of PHP with Apache is provided in undine_apache_php.
-#
+# 
 class undine_apache {
+
+  exec { "apache-update-sources-file":
+    command => '/usr/bin/apt-get update',
+  }
 
   # Install package and dependencies.
   package { 'apache2':
     ensure => installed,
+    require => Exec['apache-update-sources-file'],
   }
 
   # Manage core configuration files.

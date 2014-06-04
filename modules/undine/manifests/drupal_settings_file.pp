@@ -40,32 +40,32 @@
 #		
 # === Examples
 #
-# undine::drupal_settings_file { '/var/www/mysite/sites/default/settings.php':
-#   unset => [
-#     "$conf['my_var']",
-#     "$conf['my_other_var']",
-#   ],
-#   databases => {
-#     'default' => {
+#   undine::drupal_settings_file { '/var/www/mysite/sites/default/settings.php':
+#     unset => [
+#       "$conf['my_var']",
+#       "$conf['my_other_var']",
+#     ],
+#     databases => {
 #       'default' => {
-#         'driver' => 'mysql',
-#         'database' => 'my_db',
-#         'username' => 'db_user',
-#         'password' => 'correcthorsebatterystaple',
-#         'host' => 'localhost',
-#         'prefix' => 'mysite_',
-#         'collation' => 'utf8_general_ci',
+#         'default' => {
+#           'driver' => 'mysql',
+#           'database' => 'my_db',
+#           'username' => 'db_user',
+#           'password' => 'correcthorsebatterystaple',
+#           'host' => 'localhost',
+#           'prefix' => 'mysite_',
+#           'collation' => 'utf8_general_ci',
+#         },
 #       },
 #     },
-#   },
-#   update_free_access => false,
-#   hash_salt => 'p3pp3r',
-#   cookie_domain => '.example.com',
-#   base_url => 'http://example.com/mysite',
-#   conf => {
-#     'some_other_var' => '1',
+#     update_free_access => false,
+#     hash_salt => 'p3pp3r',
+#     cookie_domain => '.example.com',
+#     base_url => 'http://example.com/mysite',
+#     conf => {
+#       'some_other_var' => '1',
+#     }
 #   }
-# }
 #
 define undine::drupal_settings_file (
   $path = $title,

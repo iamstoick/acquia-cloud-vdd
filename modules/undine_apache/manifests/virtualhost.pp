@@ -15,9 +15,9 @@
 #
 # === Examples
 #
-# undine_apache::virtualhost { 'mysite.local':
-#   document_root => '/var/www/html/mydir',
-# }
+#   undine_apache::virtualhost { 'mysite.local':
+#     document_root => '/var/www/html/mydir',
+#   }
 #
 define undine_apache::virtualhost(
   $document_root,

@@ -21,9 +21,11 @@
 #
 # === Examples
 #
-# undine_ssh::known_host { 'git.example.com':
-#   key => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQqEyJJthk/DTVaRmJWtxGRVCis= ...'
-# }
+# Create a known_host entry for git.example.com
+#
+#   undine_ssh::known_host { 'git.example.com':
+#     key => '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQqEyJJthk/DTVaRmJWtxGRVCis= ...'
+#   }
 #
 define undine_ssh::known_host (
   $hostname = $title,
