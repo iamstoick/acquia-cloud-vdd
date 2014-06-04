@@ -1,0 +1,9 @@
+DO NOT DELETE THIS DIRECTORY.
+
+This directory is used by Undine to support additional site configurations
+(drafted in the same format as Puppet modules, typically using Undine's
+helper modules and defined types).
+
+For more information, please review the documentation and examples in the
+examples directory.
+

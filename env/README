@@ -1,0 +1,8 @@
+DO NOT DELETE THIS DIRECTORY.
+
+This directory is used by Undine to support additional environment-level
+configuration (drafted in the same format as Puppet modules) without hacking
+the core of Undine.
+
+For more information, please review the documentation and examples in the
+examples directory.
