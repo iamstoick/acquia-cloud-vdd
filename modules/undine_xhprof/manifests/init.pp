@@ -11,8 +11,16 @@
 class undine_xhprof {
   require undine_php
 
+  undine_apt::ppa { 'skettler/php':
+    ppa_user => 'skettler',
+    ppa_name => 'php',
+    source_list_d_filename => 'skettler-php-xhprof-precise.list',
+    source_list_d_source => 'puppet:///modules/undine_xhprof/skettler-php-xhprof-precise.list',
+  }
+
   package { "php53-xhprof":
     ensure => installed,
+    require => Undine_apt::Ppa['skettler/php'],
   }
 
   package { "graphviz":
