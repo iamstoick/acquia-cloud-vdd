@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: undine_tar</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">undine_tar</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/vagrant/modules/undine_tar/lib/puppet/parser/functions/get_uri_filename_rb.html">
+                /vagrant/modules/undine_tar/lib/puppet/parser/functions/get_uri_filename.rb
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_tar/lib/puppet/parser/functions/is_absolute_uri_rb.html">
+                /vagrant/modules/undine_tar/lib/puppet/parser/functions/is_absolute_uri.rb
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_tar/manifests/archive_pp.html">
+                /vagrant/modules/undine_tar/manifests/archive.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_tar/manifests/init_pp.html">
+                /vagrant/modules/undine_tar/manifests/init.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_tar/lib/puppet/parser/functions/get_uri_filename_rb.html">
+                /vagrant/modules/undine_tar/lib/puppet/parser/functions/get_uri_filename.rb
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_tar/lib/puppet/parser/functions/is_absolute_uri_rb.html">
+                /vagrant/modules/undine_tar/lib/puppet/parser/functions/is_absolute_uri.rb
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_tar/manifests/archive_pp.html">
+                /vagrant/modules/undine_tar/manifests/archive.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_tar/manifests/init_pp.html">
+                /vagrant/modules/undine_tar/manifests/init.pp
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+<!-- if childs -->
+
+    <div id="method-list">
+      <h3 class="section-bar">Defines</h3>
+
+      <div class="name-list">
+      <a href="#M000037">archive</a>&nbsp;&nbsp;
+      <a href="#M000038">archive</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <!-- if requires -->
+
+    <!-- if realizes -->
+
+    <div id="section">
+
+<!-- if facts -->
+
+<!-- if plugins -->
+    <div id="class-list">
+      <h3 class="section-bar">Plugins</h3>
+<a href="../plugins/get_uri_filename.html">get_uri_filename</a>&nbsp;&nbsp;
+<a href="../plugins/is_absolute_uri.html">is_absolute_uri</a>&nbsp;&nbsp;
+<a href="../plugins/get_uri_filename.html">get_uri_filename</a>&nbsp;&nbsp;
+<a href="../plugins/is_absolute_uri.html">is_absolute_uri</a>&nbsp;&nbsp;
+    </div>
+
+<!-- if nodes -->
+
+<!-- if class -->
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="undine_tar/undine_tar.html" class="link">undine_tar::undine_tar</a><br />
+
+    </div>
+
+
+
+
+
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Defines</h3>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <span class="method-name">archive</span><span class="method-args">( $src_password =&gt; 'undef', $src_path, $path =&gt; 'title', $src_username =&gt; 'undef', $gzip =&gt; 'false' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_tar.html#M000037">archive</a></h2>
+<p>
+The <a href="undine_tar.html#M000037">archive</a> defined type is
+responsible for the retrieval and extraction of tar archives in Undine. It
+supports retrieval from the local environment or remote hosts (via wget) to
+a destination directory on the VM, where it is optionally extracted (as if
+using tar -xzf &lt;tarball&gt;).
+</p>
+<p>
+When retrieving archives via wget, support is also included for basic auth.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>path</b></dt><dd>The destination directory on the local VM. Defaults to the resource title.
+
+</dd>
+<dt><b>src_path</b></dt><dd>The source path from which to retrieve files. Can either be a local
+directory or an absolute URI compatible with wget.
+
+</dd>
+<dt><b>src_username</b></dt><dd>Optional. The username to use when authenticating to the remote host using
+basic auth.
+
+</dd>
+<dt><b>src_password</b></dt><dd>Optional. The password to use when authenticating to the remote host using
+basic auth.
+
+</dd>
+<dt><b>gzip</b></dt><dd>Optional. Whether to use gzip decompression for the source <a
+href="undine_tar.html#M000037">archive</a>. Defaults to FALSE.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<p>
+Simple local usage.
+</p>
+<pre>
+  undine_tar::archive { '/path/to/dest':
+    src_path =&gt; '/path/to/my/src/archive.tar',
+  }
+</pre>
+<p>
+Usage via wget via basic auth, with gzip support.
+</p>
+<pre>
+  undine_tar::archive { '/path/to/dest':
+    src_path =&gt; 'http://example.com/path/to/my/archive.tar.gz',
+    src_username =&gt; 'jsmith',
+    src_password =&gt; 'correcthorsebatterystaple',
+    gzip =&gt; true,
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <span class="method-name">archive</span><span class="method-args">( $src_password =&gt; 'undef', $src_path, $path =&gt; 'title', $src_username =&gt; 'undef', $gzip =&gt; 'false' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_tar.html#M000037">archive</a></h2>
+<p>
+The <a href="undine_tar.html#M000037">archive</a> defined type is
+responsible for the retrieval and extraction of tar archives in Undine. It
+supports retrieval from the local environment or remote hosts (via wget) to
+a destination directory on the VM, where it is optionally extracted (as if
+using tar -xzf &lt;tarball&gt;).
+</p>
+<p>
+When retrieving archives via wget, support is also included for basic auth.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>path</b></dt><dd>The destination directory on the local VM. Defaults to the resource title.
+
+</dd>
+<dt><b>src_path</b></dt><dd>The source path from which to retrieve files. Can either be a local
+directory or an absolute URI compatible with wget.
+
+</dd>
+<dt><b>src_username</b></dt><dd>Optional. The username to use when authenticating to the remote host using
+basic auth.
+
+</dd>
+<dt><b>src_password</b></dt><dd>Optional. The password to use when authenticating to the remote host using
+basic auth.
+
+</dd>
+<dt><b>gzip</b></dt><dd>Optional. Whether to use gzip decompression for the source <a
+href="undine_tar.html#M000037">archive</a>. Defaults to FALSE.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<p>
+Simple local usage.
+</p>
+<pre>
+  undine_tar::archive { '/path/to/dest':
+    src_path =&gt; '/path/to/my/src/archive.tar',
+  }
+</pre>
+<p>
+Usage via wget via basic auth, with gzip support.
+</p>
+<pre>
+  undine_tar::archive { '/path/to/dest':
+    src_path =&gt; 'http://example.com/path/to/my/archive.tar.gz',
+    src_username =&gt; 'jsmith',
+    src_password =&gt; 'correcthorsebatterystaple',
+    gzip =&gt; true,
+  }
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- if resource_list -->
+
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

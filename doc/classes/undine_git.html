@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: undine_git</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">undine_git</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/vagrant/modules/undine_git/manifests/identity_pp.html">
+                /vagrant/modules/undine_git/manifests/identity.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_git/manifests/init_pp.html">
+                /vagrant/modules/undine_git/manifests/init.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_git/manifests/remote_pp.html">
+                /vagrant/modules/undine_git/manifests/remote.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_git/manifests/repository_pp.html">
+                /vagrant/modules/undine_git/manifests/repository.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_git/manifests/identity_pp.html">
+                /vagrant/modules/undine_git/manifests/identity.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_git/manifests/init_pp.html">
+                /vagrant/modules/undine_git/manifests/init.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_git/manifests/remote_pp.html">
+                /vagrant/modules/undine_git/manifests/remote.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_git/manifests/repository_pp.html">
+                /vagrant/modules/undine_git/manifests/repository.pp
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+<!-- if childs -->
+
+    <div id="method-list">
+      <h3 class="section-bar">Defines</h3>
+
+      <div class="name-list">
+      <a href="#M000021">identity</a>&nbsp;&nbsp;
+      <a href="#M000024">identity</a>&nbsp;&nbsp;
+      <a href="#M000025">remote</a>&nbsp;&nbsp;
+      <a href="#M000022">remote</a>&nbsp;&nbsp;
+      <a href="#M000023">repository</a>&nbsp;&nbsp;
+      <a href="#M000026">repository</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <!-- if requires -->
+
+    <!-- if realizes -->
+
+    <div id="section">
+
+<!-- if facts -->
+
+<!-- if plugins -->
+
+<!-- if nodes -->
+
+<!-- if class -->
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="undine_git/undine_git.html" class="link">undine_git::undine_git</a><br />
+
+    </div>
+
+
+
+
+
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Defines</h3>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <span class="method-name">identity</span><span class="method-args">( $git_name =&gt; 'title', $email )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_git.html#M000021">identity</a></h2>
+<p>
+The <a href="undine_git.html#M000021">identity</a> defined type is
+responsible for the management of the primary Git <a
+href="undine_git.html#M000021">identity</a> in Undine. Specifically, it
+manages the Git globals user.name and user.email as through using the git
+config command.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>git_name</b></dt><dd>The name to use to identify yourself to git. Defaults to the resouce title.
+
+</dd>
+<dt><b>email</b></dt><dd>The email address to use to identify yourself to git.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  undine_git::identity { &quot;Jane Smith&quot;:
+    email =&gt; 'jsmith@example.com',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <span class="method-name">identity</span><span class="method-args">( $git_name =&gt; 'title', $email )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_git.html#M000021">identity</a></h2>
+<p>
+The <a href="undine_git.html#M000021">identity</a> defined type is
+responsible for the management of the primary Git <a
+href="undine_git.html#M000021">identity</a> in Undine. Specifically, it
+manages the Git globals user.name and user.email as through using the git
+config command.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>git_name</b></dt><dd>The name to use to identify yourself to git. Defaults to the resouce title.
+
+</dd>
+<dt><b>email</b></dt><dd>The email address to use to identify yourself to git.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  undine_git::identity { &quot;Jane Smith&quot;:
+    email =&gt; 'jsmith@example.com',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <span class="method-name">remote</span><span class="method-args">( $remote_name =&gt; 'title', $remote_uri, $known_host_key =&gt; 'undef', $repo_path, $hostname =&gt; 'undef' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_git.html#M000022">remote</a></h2>
+<p>
+The <a href="undine_git.html#M000022">remote</a> defined type is
+responsible for the management of multiple remotes for Git repositories
+managed by in Undine.
+</p>
+<p>
+The <a href="undine_git.html#M000022">remote</a> defined type also provides
+a means of authenticating via SSH using a combination of agent forwarding
+to use your host environment&#8216;s SSH keys (enabled in Undine by
+default) and manipulating the known_hosts file on the guest VM. To find a
+known_hosts entry on your host system, simply use `ssh-keygen -H -F
+git.example.com` to display the correct key to provide.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>remote_name</b></dt><dd>The local name of the <a href="undine_git.html#M000022">remote</a>.
+Defaults to the resource title.
+
+</dd>
+<dt><b>remote_uri</b></dt><dd>The URI of the <a href="undine_git.html#M000022">remote</a>.
+
+</dd>
+<dt><b>repo_path</b></dt><dd>The destination path of the <a
+href="undine_git.html#M000023">repository</a> to add the <a
+href="undine_git.html#M000022">remote</a> to. This <a
+href="undine_git.html#M000023">repository</a> must already exist in the
+filesystem.
+
+</dd>
+<dt><b>hostname</b></dt><dd>Optional. The hostname of the <a href="undine_git.html#M000022">remote</a>
+to whitelist when using SSH. Must be defined along with known_host_key.
+
+</dd>
+<dt><b>known_host_key</b></dt><dd>Optional. The key of the <a href="undine_git.html#M000022">remote</a> to
+add to known_hosts for use with SSH. Must be defined along with hostname.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<p>
+Usage via SSH with an associated known_host entry.
+</p>
+<pre>
+  undine_git::remote { &quot;example_remote&quot;:
+    remote_uri =&gt; 'user@git.example.com:example.git',
+    repo_path =&gt; '/var/www/example',
+    hostname =&gt; 'git.example.com',
+    known_host_key =&gt; '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQqEyJJthk/DTVaRmJW ...',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <span class="method-name">remote</span><span class="method-args">( $remote_name =&gt; 'title', $remote_uri, $known_host_key =&gt; 'undef', $repo_path, $hostname =&gt; 'undef' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_git.html#M000022">remote</a></h2>
+<p>
+The <a href="undine_git.html#M000022">remote</a> defined type is
+responsible for the management of multiple remotes for Git repositories
+managed by in Undine.
+</p>
+<p>
+The <a href="undine_git.html#M000022">remote</a> defined type also provides
+a means of authenticating via SSH using a combination of agent forwarding
+to use your host environment&#8216;s SSH keys (enabled in Undine by
+default) and manipulating the known_hosts file on the guest VM. To find a
+known_hosts entry on your host system, simply use `ssh-keygen -H -F
+git.example.com` to display the correct key to provide.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>remote_name</b></dt><dd>The local name of the <a href="undine_git.html#M000022">remote</a>.
+Defaults to the resource title.
+
+</dd>
+<dt><b>remote_uri</b></dt><dd>The URI of the <a href="undine_git.html#M000022">remote</a>.
+
+</dd>
+<dt><b>repo_path</b></dt><dd>The destination path of the <a
+href="undine_git.html#M000023">repository</a> to add the <a
+href="undine_git.html#M000022">remote</a> to. This <a
+href="undine_git.html#M000023">repository</a> must already exist in the
+filesystem.
+
+</dd>
+<dt><b>hostname</b></dt><dd>Optional. The hostname of the <a href="undine_git.html#M000022">remote</a>
+to whitelist when using SSH. Must be defined along with known_host_key.
+
+</dd>
+<dt><b>known_host_key</b></dt><dd>Optional. The key of the <a href="undine_git.html#M000022">remote</a> to
+add to known_hosts for use with SSH. Must be defined along with hostname.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<p>
+Usage via SSH with an associated known_host entry.
+</p>
+<pre>
+  undine_git::remote { &quot;example_remote&quot;:
+    remote_uri =&gt; 'user@git.example.com:example.git',
+    repo_path =&gt; '/var/www/example',
+    hostname =&gt; 'git.example.com',
+    known_host_key =&gt; '|1|nddsvUkIUHNdM31TTSc+sPT57yg=|nQqEyJJthk/DTVaRmJW ...',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <span class="method-name">repository</span><span class="method-args">( $known_host_key =&gt; 'undef', $path, $remotes =&gt; 'undef', $hostname =&gt; 'undef', $branch =&gt; 'undef', $repo_uri =&gt; 'title' )</span>
+        </div>
+
+        <div class="method-description">
+          <p>
+Set default path and dependency information for remotes.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <span class="method-name">repository</span><span class="method-args">( $known_host_key =&gt; 'undef', $path, $remotes =&gt; 'undef', $hostname =&gt; 'undef', $branch =&gt; 'undef', $repo_uri =&gt; 'title' )</span>
+        </div>
+
+        <div class="method-description">
+          <p>
+Set default path and dependency information for remotes.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- if resource_list -->
+
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

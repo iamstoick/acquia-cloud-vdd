@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: undine_apache</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">undine_apache</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/vagrant/modules/undine_apache/lib/puppet/parser/functions/get_server_filename_rb.html">
+                /vagrant/modules/undine_apache/lib/puppet/parser/functions/get_server_filename.rb
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/manifests/httpd_mod_pp.html">
+                /vagrant/modules/undine_apache/manifests/httpd_mod.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/manifests/init_pp.html">
+                /vagrant/modules/undine_apache/manifests/init.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/manifests/misc_conf_file_pp.html">
+                /vagrant/modules/undine_apache/manifests/misc_conf_file.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/manifests/virtualhost_pp.html">
+                /vagrant/modules/undine_apache/manifests/virtualhost.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/lib/puppet/parser/functions/get_server_filename_rb.html">
+                /vagrant/modules/undine_apache/lib/puppet/parser/functions/get_server_filename.rb
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/manifests/httpd_mod_pp.html">
+                /vagrant/modules/undine_apache/manifests/httpd_mod.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/manifests/init_pp.html">
+                /vagrant/modules/undine_apache/manifests/init.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/manifests/misc_conf_file_pp.html">
+                /vagrant/modules/undine_apache/manifests/misc_conf_file.pp
+                </a>
+        <br />
+                <a href="../files/vagrant/modules/undine_apache/manifests/virtualhost_pp.html">
+                /vagrant/modules/undine_apache/manifests/virtualhost.pp
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+<!-- if childs -->
+
+    <div id="method-list">
+      <h3 class="section-bar">Defines</h3>
+
+      <div class="name-list">
+      <a href="#M000013">httpd_mod</a>&nbsp;&nbsp;
+      <a href="#M000016">httpd_mod</a>&nbsp;&nbsp;
+      <a href="#M000017">misc_conf_file</a>&nbsp;&nbsp;
+      <a href="#M000014">misc_conf_file</a>&nbsp;&nbsp;
+      <a href="#M000015">virtualhost</a>&nbsp;&nbsp;
+      <a href="#M000018">virtualhost</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <!-- if requires -->
+
+    <!-- if realizes -->
+
+    <div id="section">
+
+<!-- if facts -->
+
+<!-- if plugins -->
+    <div id="class-list">
+      <h3 class="section-bar">Plugins</h3>
+<a href="../plugins/get_server_filename.html">get_server_filename</a>&nbsp;&nbsp;
+<a href="../plugins/get_server_filename.html">get_server_filename</a>&nbsp;&nbsp;
+    </div>
+
+<!-- if nodes -->
+
+<!-- if class -->
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="undine_apache/undine_apache.html" class="link">undine_apache::undine_apache</a><br />
+
+    </div>
+
+
+
+
+
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Defines</h3>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <span class="method-name">httpd_mod</span><span class="method-args">( $load_content =&gt; 'undef', $conf_content =&gt; 'undef', $mod_name, $enabled =&gt; 'true', $load_source =&gt; 'undef', $conf_source =&gt; 'undef' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_apache.html#M000013">httpd_mod</a></h2>
+<p>
+The <a href="undine_apache.html#M000013">httpd_mod</a> resource represents
+a single Apache module to manage, triggering a restart of the Apache server
+whenever its configuration is modified.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>mod_name</b></dt><dd>The name of the Apache module.
+
+</dd>
+<dt><b>load_content</b></dt><dd>The raw content to use for the load configuration file, as a string.
+Mutually exclusive with load_source.
+
+</dd>
+<dt><b>load_source</b></dt><dd>A source file for the load configuration, which will be copied into place
+on the local system, with the same usage as the file resource. Mutually
+exclusive with load_content.
+
+</dd>
+<dt><b>conf_content</b></dt><dd>Optional. The raw content to use for the main configuration file (if any),
+as a string. Mutually exclusive with conf_source.
+
+</dd>
+<dt><b>conf_source</b></dt><dd>Optional. A source file for the main configuration (if any), which will be
+copied into place on the local system, with the same usage as the file
+resource. Mutually exclusive with conf_content.
+
+</dd>
+<dt><b>enabled</b></dt><dd>Optional. Whether the module should be enabled. Defaults to true.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  undine_apache::http_mod { 'mod_rewrite':
+    mod_name =&gt; 'rewrite',
+    load_source =&gt; 'puppet:///modules/my_rw_module/rewrite.load',
+  }
+
+  undine_apache::http_mod { 'mod_ssl':
+    mod_name =&gt; 'ssl',
+    load_source =&gt; 'puppet:///modules/my_ssl_module/ssl.load',
+    conf_source =&gt; 'puppet:///modules/my_ssl_module/ssl.conf',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <span class="method-name">httpd_mod</span><span class="method-args">( $load_content =&gt; 'undef', $conf_content =&gt; 'undef', $mod_name, $enabled =&gt; 'true', $load_source =&gt; 'undef', $conf_source =&gt; 'undef' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_apache.html#M000013">httpd_mod</a></h2>
+<p>
+The <a href="undine_apache.html#M000013">httpd_mod</a> resource represents
+a single Apache module to manage, triggering a restart of the Apache server
+whenever its configuration is modified.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>mod_name</b></dt><dd>The name of the Apache module.
+
+</dd>
+<dt><b>load_content</b></dt><dd>The raw content to use for the load configuration file, as a string.
+Mutually exclusive with load_source.
+
+</dd>
+<dt><b>load_source</b></dt><dd>A source file for the load configuration, which will be copied into place
+on the local system, with the same usage as the file resource. Mutually
+exclusive with load_content.
+
+</dd>
+<dt><b>conf_content</b></dt><dd>Optional. The raw content to use for the main configuration file (if any),
+as a string. Mutually exclusive with conf_source.
+
+</dd>
+<dt><b>conf_source</b></dt><dd>Optional. A source file for the main configuration (if any), which will be
+copied into place on the local system, with the same usage as the file
+resource. Mutually exclusive with conf_content.
+
+</dd>
+<dt><b>enabled</b></dt><dd>Optional. Whether the module should be enabled. Defaults to true.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  undine_apache::http_mod { 'mod_rewrite':
+    mod_name =&gt; 'rewrite',
+    load_source =&gt; 'puppet:///modules/my_rw_module/rewrite.load',
+  }
+
+  undine_apache::http_mod { 'mod_ssl':
+    mod_name =&gt; 'ssl',
+    load_source =&gt; 'puppet:///modules/my_ssl_module/ssl.load',
+    conf_source =&gt; 'puppet:///modules/my_ssl_module/ssl.conf',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <span class="method-name">misc_conf_file</span><span class="method-args">( $source =&gt; 'undef', $path =&gt; 'title', $ensure =&gt; 'file', $content =&gt; 'undef' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_apache.html#M000014">misc_conf_file</a></h2>
+<p>
+The <a href="undine_apache.html#M000014">misc_conf_file</a> resource
+represents a single configuration file to manage, triggering an restart of
+the Apache server when modified. Fundamentally, this is a wrapper around a
+file resource that notifies the Apache service.
+</p>
+<p>
+Configuration for Apache modules should be explicitly specified by
+declaring an undine_apache::httpd_mod resource. This is intended for other
+configruation external to Apache that requires an Apache restart to take
+effect, such as php.ini.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>content</b></dt><dd>The raw content to use for the file, as a string. Mutually exclusive with
+source.
+
+</dd>
+<dt><b>source</b></dt><dd>A source file, which will be copied into place on the local system, with
+the same usage as the file resource. Mutually exclusive with content.
+
+</dd>
+<dt><b>ensure</b></dt><dd>Optional. Whether and what type of file should exist, as defined by the
+file resource, with the exception of link. Defaults to file.
+
+</dd>
+<dt><b>path</b></dt><dd>Optional. The destination path of the file. Defaults to the resource title.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  undine_apache::misc_conf_file { '/etc/php/php.ini':
+    source =&gt; 'puppet:///modules/my_php_module/php.ini',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <span class="method-name">misc_conf_file</span><span class="method-args">( $source =&gt; 'undef', $path =&gt; 'title', $ensure =&gt; 'file', $content =&gt; 'undef' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_apache.html#M000014">misc_conf_file</a></h2>
+<p>
+The <a href="undine_apache.html#M000014">misc_conf_file</a> resource
+represents a single configuration file to manage, triggering an restart of
+the Apache server when modified. Fundamentally, this is a wrapper around a
+file resource that notifies the Apache service.
+</p>
+<p>
+Configuration for Apache modules should be explicitly specified by
+declaring an undine_apache::httpd_mod resource. This is intended for other
+configruation external to Apache that requires an Apache restart to take
+effect, such as php.ini.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>content</b></dt><dd>The raw content to use for the file, as a string. Mutually exclusive with
+source.
+
+</dd>
+<dt><b>source</b></dt><dd>A source file, which will be copied into place on the local system, with
+the same usage as the file resource. Mutually exclusive with content.
+
+</dd>
+<dt><b>ensure</b></dt><dd>Optional. Whether and what type of file should exist, as defined by the
+file resource, with the exception of link. Defaults to file.
+
+</dd>
+<dt><b>path</b></dt><dd>Optional. The destination path of the file. Defaults to the resource title.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  undine_apache::misc_conf_file { '/etc/php/php.ini':
+    source =&gt; 'puppet:///modules/my_php_module/php.ini',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <span class="method-name">virtualhost</span><span class="method-args">( $document_root, $server_name =&gt; 'title' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_apache.html#M000015">virtualhost</a></h2>
+<p>
+The <a href="undine_apache.html#M000015">virtualhost</a> resource
+represents a single Apache VirtualHost configuration, triggering a restart
+of the Apache server whenever it is modified. The configuration is stored
+in sites-available, then enabled using a2ensite.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>server_name</b></dt><dd>The name to provide to the VirtualHost&#8216;s ServerName directive.
+Defaults to the resouce title.
+
+</dd>
+<dt><b>document_root</b></dt><dd>The DocumentRoot from which to serve files.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  undine_apache::virtualhost { 'mysite.local':
+    document_root =&gt; '/var/www/html/mydir',
+  }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <span class="method-name">virtualhost</span><span class="method-args">( $document_root, $server_name =&gt; 'title' )</span>
+        </div>
+
+        <div class="method-description">
+          <h2>Define: <a href="undine_apache.html#M000015">virtualhost</a></h2>
+<p>
+The <a href="undine_apache.html#M000015">virtualhost</a> resource
+represents a single Apache VirtualHost configuration, triggering a restart
+of the Apache server whenever it is modified. The configuration is stored
+in sites-available, then enabled using a2ensite.
+</p>
+<h3>Parameters</h3>
+<dl>
+<dt><b>server_name</b></dt><dd>The name to provide to the VirtualHost&#8216;s ServerName directive.
+Defaults to the resouce title.
+
+</dd>
+<dt><b>document_root</b></dt><dd>The DocumentRoot from which to serve files.
+
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  undine_apache::virtualhost { 'mysite.local':
+    document_root =&gt; '/var/www/html/mydir',
+  }
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- if resource_list -->
+
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

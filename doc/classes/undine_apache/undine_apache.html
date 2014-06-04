@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: undine_apache::undine_apache</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">undine_apache::undine_apache</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vagrant/modules/undine_apache/manifests/init_pp.html">
+                /vagrant/modules/undine_apache/manifests/init.pp
+                </a>
+        <br />
+                <a href="../../files/vagrant/modules/undine_apache/manifests/init_pp.html">
+                /vagrant/modules/undine_apache/manifests/init.pp
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2>Class: <a href="undine_apache.html">undine_apache</a></h2>
+<p>
+The <a href="undine_apache.html">undine_apache</a> class is responsible for
+the package management, installation, and configuration of the httpd server
+used by Undine. This includes core apache configuration, ports
+configuration, default site configuration, and Apache module installation
+and configuration.
+</p>
+<p>
+It should not be necessary to declare this class directly, as it will be
+declared automatically by the <a href="../undine.html">undine</a> class,
+which all Undine sites should use.
+</p>
+<p>
+Integration of PHP with Apache is provided in <a
+href="../undine_apache_php.html">undine_apache_php</a>.
+</p>
+
+    </div>
+
+
+   </div>
+
+<!-- if childs -->
+
+
+    <div id="method-list">
+      <h3 class="section-bar">Resources</h3>
+
+      <div class="name-list">
+      <a href="#R000021">Exec[&quot;apache-update-sources-file&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000035">Exec[&quot;apache-update-sources-file&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000023">File[&quot;/etc/apache2/apache2.conf&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000037">File[&quot;/etc/apache2/apache2.conf&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000024">File[&quot;/etc/apache2/envvars&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000038">File[&quot;/etc/apache2/envvars&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000025">File[&quot;/etc/apache2/ports.conf&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000039">File[&quot;/etc/apache2/ports.conf&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000026">File[&quot;/etc/apache2/sites-available/default&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000040">File[&quot;/etc/apache2/sites-available/default&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000027">File[&quot;/etc/apache2/sites-available/default-ssl&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000041">File[&quot;/etc/apache2/sites-available/default-ssl&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000044">File[&quot;/etc/apache2/sites-enabled/000-default&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000030">File[&quot;/etc/apache2/sites-enabled/000-default&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000045">File[&quot;/etc/apache2/sites-enabled/000-default-ssl&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000031">File[&quot;/etc/apache2/sites-enabled/000-default-ssl&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000033">File[&quot;/var/lock/apache2&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000047">File[&quot;/var/lock/apache2&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000046">File[&quot;/var/www&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000032">File[&quot;/var/www&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000022">Package[&quot;apache2&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000036">Package[&quot;apache2&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000048">Service[&quot;apache2&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000034">Service[&quot;apache2&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000029">Undine_apache::Httpd_mod[&quot;mod_rewrite&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000043">Undine_apache::Httpd_mod[&quot;mod_rewrite&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000028">Undine_apache::Httpd_mod[&quot;mod_ssl&quot;]</a>&nbsp;&nbsp;
+      <a href="#R000042">Undine_apache::Httpd_mod[&quot;mod_ssl&quot;]</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <!-- if requires -->
+
+    <!-- if realizes -->
+
+    <div id="section">
+
+<!-- if facts -->
+
+<!-- if plugins -->
+
+<!-- if nodes -->
+
+<!-- if class -->
+
+
+
+
+
+
+
+    <!-- if method_list -->
+
+
+    <!-- if resource_list -->
+    <div id="resources">
+    <h3 class="section-bar">Resources</h3>
+
+      <div id="method-R000021" class="method-detail">
+        <a name="R000021"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Exec[&quot;apache-update-sources-file&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">command => "/usr/bin/apt-get update"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000035" class="method-detail">
+        <a name="R000035"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Exec[&quot;apache-update-sources-file&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">command => "/usr/bin/apt-get update"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000023" class="method-detail">
+        <a name="R000023"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/apache2.conf&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/apache2.conf"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/apache2.conf"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000037" class="method-detail">
+        <a name="R000037"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/apache2.conf&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/apache2.conf"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/apache2.conf"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000024" class="method-detail">
+        <a name="R000024"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/envvars&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/envvars"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/envvars"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000038" class="method-detail">
+        <a name="R000038"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/envvars&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/envvars"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/envvars"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000025" class="method-detail">
+        <a name="R000025"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/ports.conf&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/ports.conf"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/ports.conf"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000039" class="method-detail">
+        <a name="R000039"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/ports.conf&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/ports.conf"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/ports.conf"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000026" class="method-detail">
+        <a name="R000026"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/sites-available/default&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/sites-available/default"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/default"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000040" class="method-detail">
+        <a name="R000040"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/sites-available/default&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/sites-available/default"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/default"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000027" class="method-detail">
+        <a name="R000027"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/sites-available/default-ssl&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/sites-available/default-ssl"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/default-ssl"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000041" class="method-detail">
+        <a name="R000041"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/sites-available/default-ssl&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/sites-available/default-ssl"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => file</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">source => "puppet:///modules/undine_apache/default-ssl"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000044" class="method-detail">
+        <a name="R000044"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/sites-enabled/000-default&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/sites-enabled/000-default"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => link</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">target => "/etc/apache2/sites-available/default"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => File["/etc/apache2/sites-available/default"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000030" class="method-detail">
+        <a name="R000030"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/sites-enabled/000-default&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/sites-enabled/000-default"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => link</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">target => "/etc/apache2/sites-available/default"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => File["/etc/apache2/sites-available/default"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000045" class="method-detail">
+        <a name="R000045"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/sites-enabled/000-default-ssl&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/sites-enabled/000-default-ssl"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => link</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">target => "/etc/apache2/sites-available/default-ssl"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => File["/etc/apache2/sites-available/default-ssl"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000031" class="method-detail">
+        <a name="R000031"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/etc/apache2/sites-enabled/000-default-ssl&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/etc/apache2/sites-enabled/000-default-ssl"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => link</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">target => "/etc/apache2/sites-available/default-ssl"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => File["/etc/apache2/sites-available/default-ssl"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000033" class="method-detail">
+        <a name="R000033"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/var/lock/apache2&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => directory</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">owner => "vagrant"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000047" class="method-detail">
+        <a name="R000047"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/var/lock/apache2&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => directory</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">owner => "vagrant"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000046" class="method-detail">
+        <a name="R000046"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/var/www&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/var/www"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => directory</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">mode => 0664</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000032" class="method-detail">
+        <a name="R000032"></a>
+
+        <div class="method-heading">
+          <span class="method-name">File[&quot;/var/www&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">path => "/var/www"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => directory</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">mode => 0664</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Package["apache2"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000022" class="method-detail">
+        <a name="R000022"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Package[&quot;apache2&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => installed</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Exec["apache-update-sources-file"]</span><br />
+        </div>
+
+        <div class="method-description">
+          <p>
+Install package and dependencies.
+</p>
+        </div>
+      </div>
+
+      <div id="method-R000036" class="method-detail">
+        <a name="R000036"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Package[&quot;apache2&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => installed</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => Exec["apache-update-sources-file"]</span><br />
+        </div>
+
+        <div class="method-description">
+          <p>
+Install package and dependencies.
+</p>
+        </div>
+      </div>
+
+      <div id="method-R000048" class="method-detail">
+        <a name="R000048"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Service[&quot;apache2&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => running</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">enable => true</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => File["/var/lock/apache2"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000034" class="method-detail">
+        <a name="R000034"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Service[&quot;apache2&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">ensure => running</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">enable => true</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">require => File["/var/lock/apache2"]</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000029" class="method-detail">
+        <a name="R000029"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Undine_apache::Httpd_mod[&quot;mod_rewrite&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">mod_name => "rewrite"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">load_source => "puppet:///modules/undine_apache/rewrite.load"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000043" class="method-detail">
+        <a name="R000043"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Undine_apache::Httpd_mod[&quot;mod_rewrite&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">mod_name => "rewrite"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">load_source => "puppet:///modules/undine_apache/rewrite.load"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000028" class="method-detail">
+        <a name="R000028"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Undine_apache::Httpd_mod[&quot;mod_ssl&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">mod_name => "ssl"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">load_source => "puppet:///modules/undine_apache/ssl.load"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">conf_source => "puppet:///modules/undine_apache/ssl.conf"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-R000042" class="method-detail">
+        <a name="R000042"></a>
+
+        <div class="method-heading">
+          <span class="method-name">Undine_apache::Httpd_mod[&quot;mod_ssl&quot;]</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">mod_name => "ssl"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">load_source => "puppet:///modules/undine_apache/ssl.load"</span><br />
+          &nbsp;&nbsp;&nbsp;<span class="method-args">conf_source => "puppet:///modules/undine_apache/ssl.conf"</span><br />
+        </div>
+
+        <div class="method-description">
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
