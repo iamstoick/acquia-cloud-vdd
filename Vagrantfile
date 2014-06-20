@@ -75,7 +75,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   else
     config.vm.synced_folder vm_config["synced_folder"]["host_path"],
-      vm_config["synced_folder"]["guest_path"]
+      vm_config["synced_folder"]["guest_path"], type: "smb"
   end
 
   # Provider-specific configuration so you can fine-tune various
