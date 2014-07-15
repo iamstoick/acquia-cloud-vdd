@@ -25,6 +25,20 @@ class cachefilesd (
   anchor { 'cachefilesd::begin': } ->
   class { '::cachefilesd::install': } ->
   class { '::cachefilesd::config': } ~>
-  class { '::cachefilesd::service': } ->
+    
+  file { '/etc/default/cachefilesd':
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    source  => 'puppet:///modules/cachefilesd/cachefilesd',
+    notify  => Service['cachefilesd'],
+    require => Package['cachefilesd'],
+  }
+  
+  service { 'cachefilesd':
+    ensure => running,
+    enable => true,
+  }
+  
   anchor { 'cachefilesd::end': }
 }
