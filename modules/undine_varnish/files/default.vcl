@@ -107,12 +107,14 @@ sub vcl_deliver {
 sub vcl_fetch {
   # We need this to cache 404s, 301s, 500s. Otherwise, depending on backend but
   # definitely in Drupal's case these responses are not cacheable by default.
-  if (beresp.status == 404 || beresp.status == 301) {
+  if (beresp.status == 404 || beresp.status == 301 || beresp.status == 200) {
     set beresp.ttl = 10m;
   }
   
   # Avoid caching error 500.
   # See - http://bit.ly/1tLgi15.
+  # A good example of this is when Drupal failed to connect to MySQL.
+  # And or request timeout.
   if (beresp.status == 500) {    
     set beresp.ttl = 0s; 
   }
