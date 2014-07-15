@@ -71,7 +71,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     else
       config.vm.synced_folder vm_config["synced_folder"]["host_path"],
         vm_config["synced_folder"]["guest_path"],
-        type: "nfs", :linux__nfs_options => ["rw", "sync","no_root_squash", "subtree_check"]
+        # type: "nfs", :linux__nfs_options => ["rw", "sync","no_root_squash", "subtree_check"]
+        # the fsc is for cachedfilesd
+        type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc'] 
     end
   else
     config.vm.synced_folder vm_config["synced_folder"]["host_path"],
