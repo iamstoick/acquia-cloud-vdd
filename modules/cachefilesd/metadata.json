@@ -1,0 +1,36 @@
+{
+  "name": "brentschler-cachefilesd",
+  "version": "1.0.1",
+  "author": "Bob Rentschler",
+  "summary": "Module to control and configure cachefilesd.",
+  "license": "GPL v2",
+  "source": "https://github.com/phoenixv/cachefilesd",
+  "project_page": "https://github.com/phoenixv/cachefilesd",
+  "issues_url": "https://github.com/phoenixv/cachefilesd/issues",
+  "checksums": {
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "manifests/init.pp": "1c368f4185857ef6cb08d24819c20f10",
+    "manifests/install.pp": "9b72c993004937dc6ba63a0f62a2f0e5",
+    "templates/cachefilesd.conf.erb": "b8ecba11c9fd71c819446334a986605a",
+    "manifests/config.pp": "b1c3772767d07f61dcdac8313de9e1fb",
+    "README.md": "ae943e3b1e149633a0c6e2cae515174b",
+    "Modulefile": "d05369ccc698fde1ac947cbcd650a95c",
+    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
+    ".travis.yml": "5640fc7893c51f0ff07b41d67f5bb73a",
+    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
+    "manifests/service.pp": "7841f0c5b93d476a1b3ad5664a7f6a3c",
+    "manifests/params.pp": "b88ff4bd3141aa7cd7a66c07cd8caecf",
+    "tests/init.pp": "4990367b6da0186d7e6f5ca8e37a7204"
+  },
+  "description": "Puppet module to configure cachefilesd. ",
+  "types": [
+  
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">3.0.0"
+    },
+    {"name":"puppetlabs-stdlib","version_requirement":">3.0.0"}
+  ]
+}

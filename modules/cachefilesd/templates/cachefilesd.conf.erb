@@ -1,0 +1,34 @@
+#This file maintained by puppet, do not edit.
+
+dir <%= @cachedir %>
+tag <%= @cachetag %>
+<% if @culltable -%>
+culltable <%= @culltable %>
+<% end -%>
+<% if @disablecull == true -%>
+nocull
+<% end -%>
+
+# brun and frun represent the percent of free space (blocks) and free files available in the
+# filesystem the cache resides on required for cachefilesd to run freely. (no culling, files
+# added as accessed)
+
+brun <%= @brun %>
+frun <%= @frun %>
+
+# bcull and fcull represent the percent free on the file system at which point cachefilesd
+# will start culling the cache (deleteing files)
+
+bcull <%= @bcull %>
+fcull <%= @fcull %>
+
+# bstop and fstop represent the percent free on the file system at which point cachefilesd will
+# stop writing new files. It will resume writes only after the free space has risen to the
+# ammount specified in brun and frun.
+
+bstop <%= @bstop %>
+fstop <%= @fstop %>
+
+<% if @secctx -%>
+secctx <%= @secctx %>
+<% end -%>

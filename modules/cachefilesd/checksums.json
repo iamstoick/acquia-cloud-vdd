@@ -1,0 +1,16 @@
+{
+  "Gemfile": "f184c7cca73bc8169572ab8c48e223bc",
+  "Modulefile": "4c87acbbd5c183b19037b6e0fa990346",
+  "README.md": "d064655ca4be856dd9b6f7b5480f0965",
+  "Rakefile": "0be1d1086ed351526b5a5f273da6e284",
+  "manifests/config.pp": "8f63a539f4d0fba5c44ddb18d0c6fea0",
+  "manifests/init.pp": "1c368f4185857ef6cb08d24819c20f10",
+  "manifests/install.pp": "9b72c993004937dc6ba63a0f62a2f0e5",
+  "manifests/params.pp": "8f60a5eab1ae499e49bca2f8b8255f34",
+  "manifests/service.pp": "7841f0c5b93d476a1b3ad5664a7f6a3c",
+  "metadata.json": "71034bb0a0eba9865d9a893e258b1fd0",
+  "spec/classes/init_spec.rb": "1f8f99d96374b85e79572cc4193065db",
+  "spec/spec_helper.rb": "c560ea156eaa163b5645b8384a8c9038",
+  "templates/cachefilesd.conf.erb": "0854599ca2450de71835be327a2731b1",
+  "tests/init.pp": "4990367b6da0186d7e6f5ca8e37a7204"
+}

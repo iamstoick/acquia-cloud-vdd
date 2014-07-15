@@ -26,6 +26,7 @@ class undine {
   require undine_varnish
   require undine_memcached
   require undine_sendmail
+  require cachefilesd
 
   file { "/etc/motd":
     path => '/etc/motd',
