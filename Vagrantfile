@@ -22,6 +22,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # doesn't already exist on the user's system.
   config.vm.box_url = vm_config["box_url"]
 
+  # To be ale to use this snippet you must have "vagrant-cachier" installed.
+  # Please refer to the doc about installing Vagrant plugin.
+  # https://docs.vagrantup.com/v2/plugins/usage.html
+  if Vagrant.has_plugin?("vagrant-cachier")
+    # Configure cached packages to be shared between instances of the same base box.
+    # More info on http://fgrehm.viewdocs.io/vagrant-cachier/usage
+    config.cache.scope = :box
+
+    # OPTIONAL: If you are using VirtualBox, you might want to use that to enable
+    # NFS for shared folders. This is also very useful for vagrant-libvirt if you
+    # want bi-directional sync
+    config.cache.synced_folder_opts = {
+      type: :nfs,
+      # The nolock option can be useful for an NFSv3 client that wants to avoid the
+      # NLM sideband protocol. Without this option, apt-get might hang if it tries
+      # to lock files needed for /var/cache/* operations. All of this can be avoided
+      # by using NFSv4 everywhere. Please note that the tcp option is not the default.
+      mount_options: ['rw', 'vers=3', 'tcp', 'nolock']
+    }
+    # For more information please check http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
+  end
+
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
@@ -73,7 +95,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vm_config["synced_folder"]["guest_path"],
         # type: "nfs", :linux__nfs_options => ["rw", "sync","no_root_squash", "subtree_check"]
         # the fsc is for cachedfilesd
-        type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc'] 
+        type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc']
     end
   else
     config.vm.synced_folder vm_config["synced_folder"]["host_path"],
