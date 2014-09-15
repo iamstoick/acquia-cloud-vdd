@@ -1,2 +1,2 @@
-deb http://ppa.launchpad.net/travis-ci/memcached-sasl/ubuntu precise main
-deb-src http://ppa.launchpad.net/travis-ci/memcached-sasl/ubuntu precise main
+deb http://ppa.launchpad.net/james-page/junk/ubuntu precise main
+deb-src http://ppa.launchpad.net/james-page/junk/ubuntu precise main

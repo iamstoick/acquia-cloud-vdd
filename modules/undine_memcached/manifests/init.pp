@@ -12,6 +12,7 @@ class undine_memcached (
   $memcache_user    = 'memcache',
   $connection_limit = 1024
 ) {
+  require undine_php
 
   class {'undine_memcached::package':
     notify => Class['undine_memcached::service'],
