@@ -120,7 +120,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # meminfo shows KB and we need to convert to MB
       mem = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024 / 4
     else # sorry Windows folks, I can't help you
-      cpus = 2
+      # Default to one to make sure that VT-x error will not trigger. Set to two
+      # when your machine is has VT-x enabled
+      cpus = 1
       mem = 1024
     end
 
